@@ -9,6 +9,8 @@ node_modules/
 # Sensitive Data
 billions credentials/
 **/billions credentials/
+**/.openclaw/
+**/.gemini/
 *.key
 *.pem
 
