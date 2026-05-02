@@ -1,0 +1,28 @@
+{
+  "name": "web3central-content-engine",
+  "version": "1.0.0",
+  "description": "AI-powered content generation skill for Web3Central. Generates a 7-day social media schedule using live MongoDB data and the Groq API (Llama 3.3).",
+  "main": "scripts/generateBatch.js",
+  "scripts": {
+    "generate": "node scripts/generateBatch.js",
+    "fetch": "node scripts/fetchInsights.js",
+    "models": "node scripts/listModels.js"
+  },
+  "keywords": [
+    "web3",
+    "content",
+    "ai",
+    "groq",
+    "llama",
+    "defillama"
+  ],
+  "author": "Web3Central",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "dotenvx": "^1.39.2",
+    "form-data": "^4.0.0",
+    "mongoose": "^8.4.0"
+  }
+}
