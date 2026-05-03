@@ -19,31 +19,37 @@ git clone https://github.com/Expat-Q/Billions-Agent
 cd Billions-Agent
 ```
 
-### 2. Install Content Engine Dependencies
+### 2. Setup Dependencies
 ```bash
-cd skills/web3central-content-engine
-npm install
+# From the root directory
+npm run setup
 ```
 
 ### 3. Configure Environment Variables
-Copy the `.env.example` file and fill in your values:
+
+#### For Local Development:
+Copy the `.env.example` file (or create one) at the root and fill in your values:
 ```bash
-# At the root of the project
 GROQ_API_KEY=your_groq_api_key
 MONGODB_URI=your_mongodb_connection_string
 TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 TELEGRAM_CHAT_ID=your_telegram_chat_id
 ```
 
+#### For GitHub Codespaces:
+1. Go to your repo on GitHub -> **Settings** -> **Secrets and variables** -> **Codespaces**.
+2. Add the keys above as **Secrets**.
+3. When you launch the Codespace, they will be automatically loaded.
+
 ### 4. Run the Content Generator
 ```bash
-# From the root directory
-node skills/web3central-content-engine/scripts/generateBatch.js
-
-# Or from within the skill directory
-cd skills/web3central-content-engine
+# Run via the root shortcut
 npm run generate
+
+# Or run manually
+node skills/web3central-content-engine/scripts/generateBatch.js
 ```
+
 
 ---
 

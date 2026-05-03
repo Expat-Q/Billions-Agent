@@ -1,9 +1,25 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const dotenv = require('dotenv');
 const path = require('path');
+const fs = require('fs');
 
-// Load env
-dotenv.config({ path: path.join(__dirname, '../../../../web3central/backend/.env') });
+
+// Load environment variables
+const localEnv = path.join(__dirname, '../../../.env');
+const web3Env = path.join(__dirname, '../../../../web3central/backend/.env');
+const currentEnv = path.join(process.cwd(), '.env');
+
+if (fs.existsSync(localEnv)) {
+    dotenv.config({ path: localEnv });
+} else if (fs.existsSync(web3Env)) {
+    dotenv.config({ path: web3Env });
+} else if (fs.existsSync(currentEnv)) {
+    dotenv.config({ path: currentEnv });
+} else {
+    dotenv.config(); 
+}
+
+
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 

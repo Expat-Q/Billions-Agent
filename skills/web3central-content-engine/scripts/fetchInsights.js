@@ -6,7 +6,18 @@ const fs = require('fs');
 // Load environment variables
 const localEnv = path.join(__dirname, '../../../.env');
 const web3Env = path.join(__dirname, '../../../../web3central/backend/.env');
-dotenv.config({ path: fs.existsSync(localEnv) ? localEnv : web3Env });
+const currentEnv = path.join(process.cwd(), '.env');
+
+if (fs.existsSync(localEnv)) {
+    dotenv.config({ path: localEnv });
+} else if (fs.existsSync(web3Env)) {
+    dotenv.config({ path: web3Env });
+} else if (fs.existsSync(currentEnv)) {
+    dotenv.config({ path: currentEnv });
+} else {
+    dotenv.config(); // Fallback to process.env (useful for Codespaces)
+}
+
 
 // Define Schemas with more metrics
 const ToolSchema = new mongoose.Schema({

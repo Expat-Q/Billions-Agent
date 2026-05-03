@@ -1,0 +1,11 @@
+{
+  "name": "billions-agent",
+  "version": "1.0.0",
+  "description": "AI Agent for Web3Central Content Generation",
+  "scripts": {
+    "setup": "cd skills/web3central-content-engine && npm install",
+    "generate": "node skills/web3central-content-engine/scripts/generateBatch.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

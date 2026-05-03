@@ -8,7 +8,18 @@ const fetchInsights = require('./fetchInsights');
 // Load env
 const localEnv = path.join(__dirname, '../../../.env');
 const web3Env = path.join(__dirname, '../../../../web3central/backend/.env');
-dotenv.config({ path: fs.existsSync(localEnv) ? localEnv : web3Env });
+const currentEnv = path.join(process.cwd(), '.env');
+
+if (fs.existsSync(localEnv)) {
+    dotenv.config({ path: localEnv });
+} else if (fs.existsSync(web3Env)) {
+    dotenv.config({ path: web3Env });
+} else if (fs.existsSync(currentEnv)) {
+    dotenv.config({ path: currentEnv });
+} else {
+    dotenv.config(); // Fallback to process.env (useful for Codespaces/Production)
+}
+
 
 async function sendToTelegram(filePath, fileName) {
     const token = process.env.TELEGRAM_BOT_TOKEN;

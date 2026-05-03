@@ -1,0 +1,16 @@
+{
+	"name": "Billions Agent Dev",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint"
+			]
+		}
+	},
+	"postCreateCommand": "npm run setup",
+	"remoteUser": "node"
+}
